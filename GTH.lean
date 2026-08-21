@@ -4,10 +4,9 @@ import GTH.Continuum.Viscoelasticity
 import GTH.Topology.Knots
 import GTH.Fields.ChiralGovernor
 import GTH.Astro.WeakField
+import GTH.Astro.GravitationalWaves
 
 /-!
 # Geotopological Hydrodynamics (GTH) Formal Verification Suite
-This library formalizes the mathematical foundations of the 5D viscoelastic
-vacuum substrate framework, proving consistency across dimensional reduction,
-chiral mass governance, topological link conservation, and weak-field dynamics.
+Formalized mathematical foundations of the 5D viscoelastic vacuum substrate framework.
 -/
