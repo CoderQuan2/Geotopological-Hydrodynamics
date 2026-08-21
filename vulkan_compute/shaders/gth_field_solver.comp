@@ -1,0 +1,34 @@
+#version 450
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+
+layout(set = 0, binding = 0, rgba32f) uniform readonly image2D u_inVelocity;
+layout(set = 0, binding = 1, rgba32f) uniform writeonly image2D u_outVelocity;
+layout(set = 0, binding = 2, r32f) uniform readonly image2D u_inPressure;
+layout(set = 0, binding = 3, r32f) uniform writeonly image2D u_outPressure;
+
+layout(push_constant) uniform PushConstants {
+    vec2 resolution;
+    float dt;
+    int passType; // 0: Advect, 1: Div, 2: Jacobi, 3: Project
+} pc;
+
+void main() {
+    ivec2 coord = ivec2(gl_GlobalInvocationID.xy);
+    if (coord.x >= int(pc.resolution.x) || coord.y >= int(pc.resolution.y)) return;
+
+    if (pc.passType == 0) {
+        // Semi-Lagrangian Advection
+        vec2 v = imageLoad(u_inVelocity, coord).xy;
+        vec2 backCoord = vec2(coord) - pc.dt * v;
+        vec4 advV = imageLoad(u_inVelocity, ivec2(clamp(backCoord, vec2(0.0), pc.resolution - 1.0)));
+        imageStore(u_outVelocity, coord, advV);
+    } else if (pc.passType == 1) {
+        // Divergence
+        float vR = imageLoad(u_inVelocity, coord + ivec2(1, 0)).x;
+        float vL = imageLoad(u_inVelocity, coord - ivec2(1, 0)).x;
+        float vT = imageLoad(u_inVelocity, coord + ivec2(0, 1)).y;
+        float vB = imageLoad(u_inVelocity, coord - ivec2(0, 1)).y;
+        float div = 0.5 * ((vR - vL) + (vT - vB));
+        imageStore(u_outPressure, coord, vec4(div, 0.0, 0.0, 0.0));
+    }
+}
