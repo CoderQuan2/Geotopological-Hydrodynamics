@@ -8,8 +8,9 @@ import GTH.Fields.FunctionalRG
 import GTH.Astro.WeakField
 import GTH.Astro.GravitationalWaves
 import GTH.Astro.CosmologicalNucleosynthesis
+import GTH.Astro.ClusterDynamics
 
 /-!
 # Geotopological Hydrodynamics (GTH) Formal Verification Suite (v5.0)
-Machine-verified formal specifications across 10 core modules.
+Machine-verified formal specifications across 11 core modules.
 -/
