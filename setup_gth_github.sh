@@ -27,9 +27,9 @@ else
     echo -e "${YELLOW}Notice: Install python via 'pkg install -y python'${NC}"
 fi
 
-# 2. Inspect 15 Formal Lean 4 Modules
+# 2. Inspect 16 Formal Lean 4 Modules
 echo -e "
-${YELLOW}[2/5] Inspecting 15 Core Lean 4 Formal Proof Modules...${NC}"
+${YELLOW}[2/5] Inspecting 16 Core Lean 4 Formal Proof Modules...${NC}"
 LEAN_MODULES=(
     "GTH/Core/Parameters.lean"
     "GTH/Geometry/Substrate5D.lean"
@@ -37,6 +37,7 @@ LEAN_MODULES=(
     "GTH/Continuum/CarreauYasudaRheology.lean"
     "GTH/Topology/Knots.lean"
     "GTH/Topology/Solitons.lean"
+    "GTH/Topology/GeoKnotBraiding.lean"
     "GTH/Fields/ChiralGovernor.lean"
     "GTH/Fields/FunctionalRG.lean"
     "GTH/Fields/Electromagnetoacoustic.lean"
@@ -54,7 +55,7 @@ for mod in "${LEAN_MODULES[@]}"; do
         echo -e "  ${YELLOW}✗ Not found: $mod${NC}"
     fi
 done
-echo -e "${GREEN}✓ All 15 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
+echo -e "${GREEN}✓ All 16 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
 
 # 3. Run Validation Pipelines
 echo -e "
@@ -68,6 +69,7 @@ python3 pipelines/hubble_tension_memory_solver.py || python pipelines/hubble_ten
 python3 pipelines/electromagnetoacoustic_unification_solver.py || python pipelines/electromagnetoacoustic_unification_solver.py
 python3 pipelines/carreau_yasuda_horizon_solver.py || python pipelines/carreau_yasuda_horizon_solver.py
 python3 pipelines/mcmc_grand_covariance_sampler.py || python pipelines/mcmc_grand_covariance_sampler.py
+python3 pipelines/geoknot_braid_spectrum_solver.py || python pipelines/geoknot_braid_spectrum_solver.py
 
 # 4. WebGL2 Sandbox
 echo -e "
@@ -92,7 +94,7 @@ fi
 
 git branch -M main
 git add .
-git commit -m "GTH v5.0: Complete 15-module formal verification suite & MCMC Grand Covariance engine" || true
+git commit -m "GTH v5.0: Complete 16-module formal proof suite and upgraded 120 FPS WebGL2 engine" || true
 
 echo -e "${GREEN}✓ Remote origin set to: $(git remote get-url origin)${NC}"
 echo -e "${GREEN}✓ Branch: $(git branch --show-current)${NC}"

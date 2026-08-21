@@ -4,6 +4,7 @@ import GTH.Continuum.Viscoelasticity
 import GTH.Continuum.CarreauYasudaRheology
 import GTH.Topology.Knots
 import GTH.Topology.Solitons
+import GTH.Topology.GeoKnotBraiding
 import GTH.Fields.ChiralGovernor
 import GTH.Fields.FunctionalRG
 import GTH.Fields.Electromagnetoacoustic
@@ -15,6 +16,6 @@ import GTH.Cosmology.HubbleTension
 import GTH.Inference.GrandCovariance
 
 /-!
-# Geotopological Hydrodynamics (GTH v5.0) — Master Formal Verification Suite
-Machine-verified formal specifications across the unified 15-module GTH architecture.
+# Geotopological Hydrodynamics (GTH v5.0) — Master 16-Module Verification Suite
+Complete mathematical formalization across particle topology, field dynamics, astrophysics, and cosmology.
 -/
