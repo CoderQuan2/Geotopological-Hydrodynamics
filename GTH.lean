@@ -12,10 +12,11 @@ import GTH.Astro.WeakField
 import GTH.Astro.GravitationalWaves
 import GTH.Astro.CosmologicalNucleosynthesis
 import GTH.Astro.ClusterDynamics
+import GTH.Astro.BeltramiWakes
 import GTH.Cosmology.HubbleTension
 import GTH.Inference.GrandCovariance
 
 /-!
-# Geotopological Hydrodynamics (GTH v5.0) — Master 16-Module Verification Suite
-Complete mathematical formalization across particle topology, field dynamics, astrophysics, and cosmology.
+# Geotopological Hydrodynamics (GTH v5.0) — Master 17-Module Verification Suite
+Machine-verified formal specifications across the complete 17-module continuum architecture.
 -/
