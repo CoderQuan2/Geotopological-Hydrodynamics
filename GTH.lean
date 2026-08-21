@@ -1,6 +1,7 @@
 import GTH.Core.Parameters
 import GTH.Geometry.Substrate5D
 import GTH.Continuum.Viscoelasticity
+import GTH.Continuum.CarreauYasudaRheology
 import GTH.Topology.Knots
 import GTH.Topology.Solitons
 import GTH.Fields.ChiralGovernor
@@ -13,6 +14,6 @@ import GTH.Astro.ClusterDynamics
 import GTH.Cosmology.HubbleTension
 
 /-!
-# Geotopological Hydrodynamics (GTH) Formal Verification Suite (v5.0)
-Machine-verified formal specifications across 13 core modules.
+# Geotopological Hydrodynamics (GTH v5.0) — Complete Formal Verification Suite
+Machine-verified formal specifications across the complete 14-module GTH monograph series.
 -/
