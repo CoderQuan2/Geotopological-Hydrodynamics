@@ -27,9 +27,9 @@ else
     echo -e "${YELLOW}Notice: Install python via 'pkg install -y python'${NC}"
 fi
 
-# 2. Inspect 12 Formal Lean 4 Modules
+# 2. Inspect 13 Formal Lean 4 Modules
 echo -e "
-${YELLOW}[2/5] Inspecting 12 Core Lean 4 Formal Proof Modules...${NC}"
+${YELLOW}[2/5] Inspecting 13 Core Lean 4 Formal Proof Modules...${NC}"
 LEAN_MODULES=(
     "GTH/Core/Parameters.lean"
     "GTH/Geometry/Substrate5D.lean"
@@ -38,6 +38,7 @@ LEAN_MODULES=(
     "GTH/Topology/Solitons.lean"
     "GTH/Fields/ChiralGovernor.lean"
     "GTH/Fields/FunctionalRG.lean"
+    "GTH/Fields/Electromagnetoacoustic.lean"
     "GTH/Astro/WeakField.lean"
     "GTH/Astro/GravitationalWaves.lean"
     "GTH/Astro/CosmologicalNucleosynthesis.lean"
@@ -51,7 +52,7 @@ for mod in "${LEAN_MODULES[@]}"; do
         echo -e "  ${YELLOW}✗ Not found: $mod${NC}"
     fi
 done
-echo -e "${GREEN}✓ All 12 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
+echo -e "${GREEN}✓ All 13 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
 
 # 3. Run Validation Pipelines
 echo -e "
@@ -62,6 +63,7 @@ python3 pipelines/frg_density_ceiling_solver.py || python pipelines/frg_density_
 python3 pipelines/bbn_lithium_resolution_solver.py || python pipelines/bbn_lithium_resolution_solver.py
 python3 pipelines/cluster_bullet_offset_solver.py || python pipelines/cluster_bullet_offset_solver.py
 python3 pipelines/hubble_tension_memory_solver.py || python pipelines/hubble_tension_memory_solver.py
+python3 pipelines/electromagnetoacoustic_unification_solver.py || python pipelines/electromagnetoacoustic_unification_solver.py
 
 # 4. WebGL2 Sandbox
 echo -e "
@@ -86,7 +88,7 @@ fi
 
 git branch -M main
 git add .
-git commit -m "GTH v5.0: Complete 12-module formal proof suite and Hubble tension memory solver" || true
+git commit -m "GTH v5.0: Complete 13-module formal proof suite and EMA unification pipeline" || true
 
 echo -e "${GREEN}✓ Remote origin set to: $(git remote get-url origin)${NC}"
 echo -e "${GREEN}✓ Branch: $(git branch --show-current)${NC}"
