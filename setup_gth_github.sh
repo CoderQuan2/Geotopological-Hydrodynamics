@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ==============================================================================
 #  GEOTOPOLOGICAL HYDRODYNAMICS (GTH v5.0) — SETUP & GITHUB DEPLOYER
-#  Target: CoderQuan2/geotopological-hydrodynamics
+#  Target: https://github.com/CoderQuan2/geotopological-hydrodynamics
 # ==============================================================================
 set -e
 
@@ -27,9 +27,9 @@ else
     echo -e "${YELLOW}Notice: Install python via 'pkg install -y python'${NC}"
 fi
 
-# 2. Inspect 9 Formal Lean 4 Modules
+# 2. Inspect 10 Formal Lean 4 Modules
 echo -e "
-${YELLOW}[2/5] Inspecting 9 Core Lean 4 Formal Proof Modules...${NC}"
+${YELLOW}[2/5] Inspecting 10 Core Lean 4 Formal Proof Modules...${NC}"
 LEAN_MODULES=(
     "GTH/Core/Parameters.lean"
     "GTH/Geometry/Substrate5D.lean"
@@ -40,6 +40,7 @@ LEAN_MODULES=(
     "GTH/Fields/FunctionalRG.lean"
     "GTH/Astro/WeakField.lean"
     "GTH/Astro/GravitationalWaves.lean"
+    "GTH/Astro/CosmologicalNucleosynthesis.lean"
 )
 for mod in "${LEAN_MODULES[@]}"; do
     if [ -f "$mod" ]; then
@@ -48,7 +49,7 @@ for mod in "${LEAN_MODULES[@]}"; do
         echo -e "  ${YELLOW}✗ Not found: $mod${NC}"
     fi
 done
-echo -e "${GREEN}✓ All 9 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
+echo -e "${GREEN}✓ All 10 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
 
 # 3. Run Validation Pipelines
 echo -e "
@@ -56,6 +57,7 @@ ${YELLOW}[3/5] Running Empirical Validation Pipelines...${NC}"
 python3 pipelines/sparc_rotation_fit.py || python pipelines/sparc_rotation_fit.py
 python3 pipelines/gw_echo_ringdown.py || python pipelines/gw_echo_ringdown.py
 python3 pipelines/frg_density_ceiling_solver.py || python pipelines/frg_density_ceiling_solver.py
+python3 pipelines/bbn_lithium_resolution_solver.py || python pipelines/bbn_lithium_resolution_solver.py
 
 # 4. WebGL2 Sandbox
 echo -e "
@@ -80,7 +82,7 @@ fi
 
 git branch -M main
 git add .
-git commit -m "GTH v5.0: Complete 9-module formal proof suite and empirical pipelines" || true
+git commit -m "GTH v5.0: Complete 10-module formal proof suite and BBN lithium resolution pipeline" || true
 
 echo -e "${GREEN}✓ Remote origin set to: $(git remote get-url origin)${NC}"
 echo -e "${GREEN}✓ Branch: $(git branch --show-current)${NC}"
