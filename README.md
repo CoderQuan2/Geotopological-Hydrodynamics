@@ -61,10 +61,14 @@ Instead of treating gravitation as empty geometric curvature and matter as zero-
 
 ### 1. The 7-Parameter Substrate State Vector $\mathbf{\Theta}$
 All physical dynamics are uniquely parameterized by the locked SI state tuple:
-$$\mathbf{\Theta} \equiv \left( M_{	ext{UV}},\, m_{	ext{IR}},\, ho_0,\, K_{	ext{bulk}},\, G_{	ext{shear}},\, 	au_0,\, \eta_n ight)$$
+$$\mathbf{\Theta} \equiv \left( M_{	ext{UV}},\, m_{	ext{IR}},\, 
+ho_0,\, K_{	ext{bulk}},\, G_{	ext{shear}},\, 	au_0,\, \eta_n 
+ight)$$
 
-* **Longitudinal Sound Speed:** $c_s = \sqrt{K_{	ext{bulk}} / ho_0}$
-* **Transverse Shear Speed:** $c_t = \sqrt{G_{	ext{shear}} / ho_0}$
+* **Longitudinal Sound Speed:** $c_s = \sqrt{K_{	ext{bulk}} / 
+ho_0}$
+* **Transverse Shear Speed:** $c_t = \sqrt{G_{	ext{shear}} / 
+ho_0}$
 * **Geometric Mass Cutoff:** $\Lambda_{	ext{GTH}} = \sqrt{M_{	ext{UV}} \cdot m_{	ext{IR}}}$
 
 ### 2. Kaluza-Klein Reduction to 4D Einstein Gravity
@@ -78,7 +82,8 @@ $$	ext{Lk}(\mathcal{K}, \mathcal{K}^+) = 	ext{Tw}(\mathcal{K}) + 	ext{Wr}(\mathc
 $$0 < M_{G,	ext{eff}}^2(x) \le M_G^2, \quad orall x \in \mathcal{M}_4$$
 
 ### 5. Acoustic Horizon Echo Delay & Cavity Resonance
-$$\Delta t_{	ext{echo}} = rac{2 r_s}{c} \ln\left(rac{1}{\epsilon_{	ext{sub}}}ight) + rac{2 r_s}{c_{s,	ext{shear}}}, \quad f_{	ext{res}} = rac{1}{\Delta t_{	ext{echo}}}$$
+$$\Delta t_{	ext{echo}} = rac{2 r_s}{c} \ln\left(rac{1}{\epsilon_{	ext{sub}}}
+ight) + rac{2 r_s}{c_{s,	ext{shear}}}, \quad f_{	ext{res}} = rac{1}{\Delta t_{	ext{echo}}}$$
 
 ---
 
@@ -160,7 +165,9 @@ python3 pipelines/gw_echo_ringdown.py
 | **Galactic** | SPARC Flat Rotation Curve | $v_\infty = (G M_{	ext{bar}} a_0)^{1/4}$ | 175 Galaxies (SPARC) | **RMS < 4.2%** |
 | **Gravitational Waves** | Remnant Echo Delay ($\Delta t_{	ext{SG}}$) | $7.045\,	ext{ms}$ | GW150914 Ringdown | **CONFIRMED** |
 | **Gravitational Waves** | Cavity Resonance ($f_{	ext{SG}}$) | $141.94\,	ext{Hz}$ | LIGO/Virgo O3/O4 | **CONFIRMED** |
-| **Cosmological** | Singularity Regularization | $ho < ho_{	ext{max}} = rac{1}{2lpha\kappa}$ | Non-Singular Core | **PROVEN** |
+| **Cosmological** | Singularity Regularization | $
+ho < 
+ho_{	ext{max}} = rac{1}{2lpha\kappa}$ | Non-Singular Core | **PROVEN** |
 
 ---
 
