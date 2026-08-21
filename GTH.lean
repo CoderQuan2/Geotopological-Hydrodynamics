@@ -9,6 +9,6 @@ import GTH.Astro.WeakField
 import GTH.Astro.GravitationalWaves
 
 /-!
-# Geotopological Hydrodynamics (GTH) Formal Verification Suite (v5.0)
+# Geotopological Hydrodynamics (GTH) Formal Verification Suite
 Machine-verified formal specifications across 9 core modules.
 -/
