@@ -12,8 +12,9 @@ import GTH.Astro.GravitationalWaves
 import GTH.Astro.CosmologicalNucleosynthesis
 import GTH.Astro.ClusterDynamics
 import GTH.Cosmology.HubbleTension
+import GTH.Inference.GrandCovariance
 
 /-!
-# Geotopological Hydrodynamics (GTH v5.0) — Complete Formal Verification Suite
-Machine-verified formal specifications across the complete 14-module GTH monograph series.
+# Geotopological Hydrodynamics (GTH v5.0) — Master Formal Verification Suite
+Machine-verified formal specifications across the unified 15-module GTH architecture.
 -/
