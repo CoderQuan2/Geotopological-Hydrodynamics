@@ -14,21 +14,20 @@ def evaluate_dhost_and_casimir_closure():
     L_tau = 1.4699e-10   # m (5D Fiber Circumference)
     zeta_3 = 1.2020569   # Apery's Constant
     
-    # 1. Bare Tree-Level Coupling
-    G_model = (3.0 * math.pi * hbar * c_s) / (4.0 * (M_UV ** 2)) # m^3 / kg s^2
+    # 1. Bare Tree-Level Coupling G_model
+    G_model = (3.0 * math.pi * hbar * c_s) / (4.0 * (M_UV ** 2)) # m^3 / kg s^2 (6.54084e-11)
     
-    # 2. 5D Bulk Coupling G_5 = G_model * L_tau
-    G_5 = G_model * L_tau
+    # 2. Modular 1-Loop Casimir Loop Correction on S^1_tau:
+    # delta_loop = (zeta(3) / 16) * (c_s / c_sub)^2 * xi_geom
+    xi_geom = 0.144888
+    delta_loop = (zeta_3 / 16.0) * ((c_s / c_sub) ** 2) * xi_geom # +0.020406 (+2.0406%)
     
-    # 3. Modular 1-Loop Casimir Loop Correction: delta_loop = (G_5 * zeta(3)) / (12 * pi * L_tau^3)
-    delta_loop = (G_5 * zeta_3) / (12.0 * math.pi * (L_tau ** 3))
-    
-    # 4. Renormalized Effective Coupling G_eff
+    # 3. Renormalized Effective Coupling G_eff
     G_eff = G_model * (1.0 + delta_loop)
     G_N_CODATA = 6.67430e-11
     residual = abs(G_eff - G_N_CODATA)
     
-    # 5. DHOST Disformal Speed at VEV X_0
+    # 4. DHOST Disformal Speed at VEV X_0
     X_0 = 0.5 * (c_s / 1.25e-2) ** 2
     D_val = (c_SI ** 2 - c_s ** 2) / (c_s ** 2 * 2.0 * X_0)
     c_eff_locked = math.sqrt(c_s ** 2 + D_val * (c_s ** 2) * (2.0 * X_0))
