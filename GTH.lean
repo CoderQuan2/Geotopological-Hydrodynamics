@@ -33,12 +33,13 @@ import GTH.Astro.BeltramiWakes
 import GTH.Cosmology.HubbleTension
 import GTH.Cosmology.TopologicalInflationaryPhase
 import GTH.Inference.GrandCovariance
+import GTH.Inference.JointPosteriorEstimation
 import GTH.Optics.GravitationalLensing
 import GTH.Axioms.MasterTreatiseClosure
 import GTH.HPC.DistributedLensingDriver
 import GTH.Vulkan.NDKComputeKernel
 
 /-!
-# Geotopological Hydrodynamics (GTH v12.0) — Master 39-Module Formal Verification Suite
-Machine-verified formal specifications across PPN metric expansions, braid topology, DHOST reductions, and astrophysics.
+# Geotopological Hydrodynamics (GTH v12.0) — Master 40-Module Formal Verification Suite
+Machine-verified formal specifications across joint Bayesian inference, PPN expansions, and quantum astrophysics.
 -/

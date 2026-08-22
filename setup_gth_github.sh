@@ -27,9 +27,9 @@ else
     echo -e "${YELLOW}Notice: Install python via 'pkg install -y python'${NC}"
 fi
 
-# 2. Inspect 39 Formal Lean 4 Modules
+# 2. Inspect 40 Formal Lean 4 Modules
 echo -e "
-${YELLOW}[2/5] Inspecting 39 Core Lean 4 Formal Proof Modules...${NC}"
+${YELLOW}[2/5] Inspecting 40 Core Lean 4 Formal Proof Modules...${NC}"
 LEAN_MODULES=(
     "GTH/Core/Parameters.lean"
     "GTH/Core/SaturatedCoreMechanics.lean"
@@ -66,6 +66,7 @@ LEAN_MODULES=(
     "GTH/Cosmology/HubbleTension.lean"
     "GTH/Cosmology/TopologicalInflationaryPhase.lean"
     "GTH/Inference/GrandCovariance.lean"
+    "GTH/Inference/JointPosteriorEstimation.lean"
     "GTH/Optics/GravitationalLensing.lean"
     "GTH/Axioms/MasterTreatiseClosure.lean"
     "GTH/HPC/DistributedLensingDriver.lean"
@@ -78,7 +79,7 @@ for mod in "${LEAN_MODULES[@]}"; do
         echo -e "  ${YELLOW}✗ Not found: $mod${NC}"
     fi
 done
-echo -e "${GREEN}✓ All 39 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
+echo -e "${GREEN}✓ All 40 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
 
 # 3. Run Validation Pipelines
 echo -e "
@@ -116,6 +117,7 @@ python3 pipelines/weyl_electric_projection_solver.py || python pipelines/weyl_el
 python3 pipelines/dhost_invertibility_conservation_solver.py || python pipelines/dhost_invertibility_conservation_solver.py
 python3 pipelines/braid_polynomial_mass_spectrum_solver.py || python pipelines/braid_polynomial_mass_spectrum_solver.py
 python3 pipelines/ppn_cassini_polarization_solver.py || python pipelines/ppn_cassini_polarization_solver.py
+python3 pipelines/joint_mcmc_bayesian_posterior_solver.py || python pipelines/joint_mcmc_bayesian_posterior_solver.py
 
 # 4. WebGL2 Sandbox
 echo -e "
@@ -140,7 +142,7 @@ fi
 
 git branch -M main
 git add .
-git commit -m "GTH v12.0: Complete 39-module formal verification suite and PPN Cassini solver" || true
+git commit -m "GTH v12.0: Complete 40-module formal verification suite and Joint MCMC Bayesian solver" || true
 
 echo -e "${GREEN}✓ Remote origin set to: $(git remote get-url origin)${NC}"
 echo -e "${GREEN}✓ Branch: $(git branch --show-current)${NC}"
