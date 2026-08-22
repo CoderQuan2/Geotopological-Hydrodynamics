@@ -22,8 +22,9 @@ import GTH.Astro.BeltramiWakes
 import GTH.Cosmology.HubbleTension
 import GTH.Inference.GrandCovariance
 import GTH.Optics.GravitationalLensing
+import GTH.Axioms.MasterTreatiseClosure
 
 /-!
-# Geotopological Hydrodynamics (GTH v5.0) — Master 24-Module Formal Verification Suite
-Complete zero-sorry formal proofs across quantum vacuum mechanics, dielectric breakdown, and astrophysics.
+# Geotopological Hydrodynamics (GTH v5.0) — Complete Master 25-Module Formal Verification Suite
+Machine-verified formal specifications across quantum foundations, particle topology, astrophysics, and cosmology.
 -/
