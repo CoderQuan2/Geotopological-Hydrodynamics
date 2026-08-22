@@ -24,8 +24,9 @@ import GTH.Inference.GrandCovariance
 import GTH.Optics.GravitationalLensing
 import GTH.Axioms.MasterTreatiseClosure
 import GTH.HPC.DistributedLensingDriver
+import GTH.Vulkan.NDKComputeKernel
 
 /-!
-# Geotopological Hydrodynamics (GTH v5.0) — Master 26-Module Formal Verification Suite
-Complete zero-sorry machine-verified proofs across distributed HPC algorithms, quantum vacuum mechanics, and cosmology.
+# Geotopological Hydrodynamics (GTH v5.0) — Master 27-Module Formal Verification Suite
+Machine-verified formal specifications across GPU/Vulkan compute algorithms, quantum vacuum mechanics, and cosmology.
 -/
