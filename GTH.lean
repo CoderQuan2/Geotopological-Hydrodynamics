@@ -1,4 +1,5 @@
 import GTH.Core.Parameters
+import GTH.Core.SaturatedCoreMechanics
 import GTH.Geometry.Substrate5D
 import GTH.Geometry.GaussCodazziProjection
 import GTH.Continuum.Viscoelasticity
@@ -22,6 +23,6 @@ import GTH.Inference.GrandCovariance
 import GTH.Optics.GravitationalLensing
 
 /-!
-# Geotopological Hydrodynamics (GTH v5.0) — Master 22-Module Formal Verification Suite
-Complete zero-sorry verification across quantum field corrections, screening geometry, and PPN bounds.
+# Geotopological Hydrodynamics (GTH v5.0) — Master 23-Module Formal Verification Suite
+Machine-verified formal specifications across non-singular core mechanics, quantum corrections, and field theory.
 -/
