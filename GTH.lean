@@ -4,6 +4,7 @@ import GTH.Geometry.Substrate5D
 import GTH.Geometry.GaussCodazziProjection
 import GTH.Continuum.Viscoelasticity
 import GTH.Continuum.CarreauYasudaRheology
+import GTH.Continuum.CarreauYasudaStrainTensors
 import GTH.Topology.Knots
 import GTH.Topology.Solitons
 import GTH.Topology.GeoKnotBraiding
@@ -27,6 +28,6 @@ import GTH.HPC.DistributedLensingDriver
 import GTH.Vulkan.NDKComputeKernel
 
 /-!
-# Geotopological Hydrodynamics (GTH v5.0) — Master 27-Module Formal Verification Suite
-Machine-verified formal specifications across GPU/Vulkan compute algorithms, quantum vacuum mechanics, and cosmology.
+# Geotopological Hydrodynamics (GTH v5.0) — Master 28-Module Formal Verification Suite
+Machine-verified formal specifications across non-linear continuum rheology, quantum geometry, and astrophysics.
 -/
