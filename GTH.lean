@@ -10,6 +10,7 @@ import GTH.Continuum.CarreauYasudaStrainTensors
 import GTH.Topology.Knots
 import GTH.Topology.Solitons
 import GTH.Topology.GeoKnotBraiding
+import GTH.Topology.BraidPolynomialMassSpectrum
 import GTH.Fields.ChiralGovernor
 import GTH.Fields.FunctionalRG
 import GTH.Fields.Electromagnetoacoustic
@@ -37,6 +38,6 @@ import GTH.HPC.DistributedLensingDriver
 import GTH.Vulkan.NDKComputeKernel
 
 /-!
-# Geotopological Hydrodynamics (GTH v12.0) — Master 37-Module Formal Verification Suite
-Machine-verified formal specifications across DHOST action reductions, Weyl curvature tensor calculus, and quantum astrophysics.
+# Geotopological Hydrodynamics (GTH v12.0) — Master 38-Module Formal Verification Suite
+Machine-verified formal specifications across Artin B3 braid invariants, DHOST reductions, and quantum astrophysics.
 -/
