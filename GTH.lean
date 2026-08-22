@@ -21,6 +21,7 @@ import GTH.FieldTheory.DHOSTActionReduction
 import GTH.Quantum.CasimirThreshold
 import GTH.Quantum.VortexCirculationQuantization
 import GTH.Quantum.NeutrinoOscillationGeometry
+import GTH.Quantum.EFTChiralAnomalyCancellation
 import GTH.Astro.WeakField
 import GTH.Astro.GravitationalWaves
 import GTH.Astro.GravitationalWaveHarmonics
@@ -40,6 +41,6 @@ import GTH.HPC.DistributedLensingDriver
 import GTH.Vulkan.NDKComputeKernel
 
 /-!
-# Geotopological Hydrodynamics (GTH v12.0) — Master 40-Module Formal Verification Suite
-Machine-verified formal specifications across joint Bayesian inference, PPN expansions, and quantum astrophysics.
+# Geotopological Hydrodynamics (GTH v12.0) — Master 41-Module Formal Verification Suite
+Machine-verified formal specifications across EFT chiral anomaly cancellation, joint Bayesian MCMC, and quantum astrophysics.
 -/
