@@ -3,6 +3,7 @@ import GTH.Core.SaturatedCoreMechanics
 import GTH.Geometry.Substrate5D
 import GTH.Geometry.GaussCodazziProjection
 import GTH.Geometry.TensorCurvatureCalculus
+import GTH.Geometry.GaussCodazziCurvatureTensor
 import GTH.Continuum.Viscoelasticity
 import GTH.Continuum.CarreauYasudaRheology
 import GTH.Continuum.CarreauYasudaStrainTensors
@@ -35,6 +36,6 @@ import GTH.HPC.DistributedLensingDriver
 import GTH.Vulkan.NDKComputeKernel
 
 /-!
-# Geotopological Hydrodynamics (GTH v5.0) — Master 35-Module Formal Verification Suite
-Machine-verified formal specifications across tensor curvature calculus, topological inflation, and quantum astrophysics.
+# Geotopological Hydrodynamics (GTH v12.0) — Master 36-Module Formal Verification Suite
+Machine-verified formal specifications across 5D Gauss-Codazzi Weyl curvature, tensor calculus, and quantum astrophysics.
 -/

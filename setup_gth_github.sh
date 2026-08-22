@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-#  GEOTOPOLOGICAL HYDRODYNAMICS (GTH v5.0) — MASTER SETUP & GITHUB DEPLOYER
+#  GEOTOPOLOGICAL HYDRODYNAMICS (GTH v12.0) — MASTER SETUP & GITHUB DEPLOYER
 #  Target: https://github.com/CoderQuan2/geotopological-hydrodynamics
 # ==============================================================================
 set -e
@@ -12,7 +12,7 @@ MAGENTA='\033[0;35m'
 NC='\033[0m'
 
 echo -e "${CYAN}==============================================================================${NC}"
-echo -e "${CYAN}   GEOTOPOLOGICAL HYDRODYNAMICS (GTH v5.0) — MASTER SETUP & DEPLOYMENT       ${NC}"
+echo -e "${CYAN}   GEOTOPOLOGICAL HYDRODYNAMICS (GTH v12.0) — MASTER SETUP & DEPLOYMENT      ${NC}"
 echo -e "${CYAN}   Target: https://github.com/CoderQuan2/geotopological-hydrodynamics        ${NC}"
 echo -e "${CYAN}==============================================================================${NC}"
 
@@ -27,15 +27,16 @@ else
     echo -e "${YELLOW}Notice: Install python via 'pkg install -y python'${NC}"
 fi
 
-# 2. Inspect 35 Formal Lean 4 Modules
+# 2. Inspect 36 Formal Lean 4 Modules
 echo -e "
-${YELLOW}[2/5] Inspecting 35 Core Lean 4 Formal Proof Modules...${NC}"
+${YELLOW}[2/5] Inspecting 36 Core Lean 4 Formal Proof Modules...${NC}"
 LEAN_MODULES=(
     "GTH/Core/Parameters.lean"
     "GTH/Core/SaturatedCoreMechanics.lean"
     "GTH/Geometry/Substrate5D.lean"
     "GTH/Geometry/GaussCodazziProjection.lean"
     "GTH/Geometry/TensorCurvatureCalculus.lean"
+    "GTH/Geometry/GaussCodazziCurvatureTensor.lean"
     "GTH/Continuum/Viscoelasticity.lean"
     "GTH/Continuum/CarreauYasudaRheology.lean"
     "GTH/Continuum/CarreauYasudaStrainTensors.lean"
@@ -74,7 +75,7 @@ for mod in "${LEAN_MODULES[@]}"; do
         echo -e "  ${YELLOW}✗ Not found: $mod${NC}"
     fi
 done
-echo -e "${GREEN}✓ All 35 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
+echo -e "${GREEN}✓ All 36 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
 
 # 3. Run Validation Pipelines
 echo -e "
@@ -108,6 +109,7 @@ python3 pipelines/vortex_circulation_magnus_solver.py || python pipelines/vortex
 python3 pipelines/neutrino_oscillation_flavor_solver.py || python pipelines/neutrino_oscillation_flavor_solver.py
 python3 pipelines/topological_inflation_power_spectrum_solver.py || python pipelines/topological_inflation_power_spectrum_solver.py
 python3 pipelines/tensor_curvature_einstein_solver.py || python pipelines/tensor_curvature_einstein_solver.py
+python3 pipelines/weyl_electric_projection_solver.py || python pipelines/weyl_electric_projection_solver.py
 
 # 4. WebGL2 Sandbox
 echo -e "
@@ -132,7 +134,7 @@ fi
 
 git branch -M main
 git add .
-git commit -m "GTH v5.0: Complete 35-module formal verification suite and Tensor Curvature solver" || true
+git commit -m "GTH v12.0: Complete 36-module formal verification suite and Weyl Electric Projection pipeline" || true
 
 echo -e "${GREEN}✓ Remote origin set to: $(git remote get-url origin)${NC}"
 echo -e "${GREEN}✓ Branch: $(git branch --show-current)${NC}"
