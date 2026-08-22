@@ -25,6 +25,7 @@ import GTH.Astro.WeakField
 import GTH.Astro.GravitationalWaves
 import GTH.Astro.GravitationalWaveHarmonics
 import GTH.Astro.SpinVorticityQuadrupole
+import GTH.Astro.ParameterizedPostNewtonian
 import GTH.Astro.CosmologicalNucleosynthesis
 import GTH.Astro.NonThermalGamowFusion
 import GTH.Astro.ClusterDynamics
@@ -38,6 +39,6 @@ import GTH.HPC.DistributedLensingDriver
 import GTH.Vulkan.NDKComputeKernel
 
 /-!
-# Geotopological Hydrodynamics (GTH v12.0) — Master 38-Module Formal Verification Suite
-Machine-verified formal specifications across Artin B3 braid invariants, DHOST reductions, and quantum astrophysics.
+# Geotopological Hydrodynamics (GTH v12.0) — Master 39-Module Formal Verification Suite
+Machine-verified formal specifications across PPN metric expansions, braid topology, DHOST reductions, and astrophysics.
 -/
