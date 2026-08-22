@@ -15,6 +15,7 @@ import GTH.Topology.SolitonStabilityDerrickEvasion
 import GTH.Fields.ChiralGovernor
 import GTH.Fields.FunctionalRG
 import GTH.Fields.Electromagnetoacoustic
+import GTH.Fields.KaluzaKleinMaxwellReduction
 import GTH.Fields.ScaleIsolation
 import GTH.Fields.AcousticPaschenGuidance
 import GTH.FieldTheory.DHOSTDisformalCoupling
@@ -42,6 +43,6 @@ import GTH.HPC.DistributedLensingDriver
 import GTH.Vulkan.NDKComputeKernel
 
 /-!
-# Geotopological Hydrodynamics (GTH v12.0) — Master 42-Module Formal Verification Suite
-Machine-verified formal specifications across Derrick's evasion soliton stability, chiral anomalies, and quantum astrophysics.
+# Geotopological Hydrodynamics (GTH v12.0) — Master 43-Module Formal Verification Suite
+Machine-verified formal specifications across 5D KK Maxwell reduction, Derrick evasion soliton stability, and quantum astrophysics.
 -/

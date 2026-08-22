@@ -27,9 +27,9 @@ else
     echo -e "${YELLOW}Notice: Install python via 'pkg install -y python'${NC}"
 fi
 
-# 2. Inspect 42 Formal Lean 4 Modules
+# 2. Inspect 43 Formal Lean 4 Modules
 echo -e "
-${YELLOW}[2/5] Inspecting 42 Core Lean 4 Formal Proof Modules...${NC}"
+${YELLOW}[2/5] Inspecting 43 Core Lean 4 Formal Proof Modules...${NC}"
 LEAN_MODULES=(
     "GTH/Core/Parameters.lean"
     "GTH/Core/SaturatedCoreMechanics.lean"
@@ -48,6 +48,7 @@ LEAN_MODULES=(
     "GTH/Fields/ChiralGovernor.lean"
     "GTH/Fields/FunctionalRG.lean"
     "GTH/Fields/Electromagnetoacoustic.lean"
+    "GTH/Fields/KaluzaKleinMaxwellReduction.lean"
     "GTH/Fields/ScaleIsolation.lean"
     "GTH/Fields/AcousticPaschenGuidance.lean"
     "GTH/FieldTheory/DHOSTDisformalCoupling.lean"
@@ -81,7 +82,7 @@ for mod in "${LEAN_MODULES[@]}"; do
         echo -e "  ${YELLOW}✗ Not found: $mod${NC}"
     fi
 done
-echo -e "${GREEN}✓ All 42 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
+echo -e "${GREEN}✓ All 43 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
 
 # 3. Run Validation Pipelines
 echo -e "
@@ -122,6 +123,7 @@ python3 pipelines/ppn_cassini_polarization_solver.py || python pipelines/ppn_cas
 python3 pipelines/joint_mcmc_bayesian_posterior_solver.py || python pipelines/joint_mcmc_bayesian_posterior_solver.py
 python3 pipelines/eft_anomaly_cancellation_solver.py || python pipelines/eft_anomaly_cancellation_solver.py
 python3 pipelines/derrick_stability_soliton_solver.py || python pipelines/derrick_stability_soliton_solver.py
+python3 pipelines/kk_maxwell_variational_reduction_solver.py || python pipelines/kk_maxwell_variational_reduction_solver.py
 
 # 4. WebGL2 Sandbox
 echo -e "
@@ -146,7 +148,7 @@ fi
 
 git branch -M main
 git add .
-git commit -m "GTH v12.0: Complete 42-module formal verification suite and Derrick Stability solver" || true
+git commit -m "GTH v12.0: Complete 43-module formal verification suite and KK Maxwell Reduction solver" || true
 
 echo -e "${GREEN}✓ Remote origin set to: $(git remote get-url origin)${NC}"
 echo -e "${GREEN}✓ Branch: $(git branch --show-current)${NC}"
