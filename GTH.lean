@@ -17,6 +17,7 @@ import GTH.FieldTheory.DHOSTDisformalCoupling
 import GTH.Quantum.CasimirThreshold
 import GTH.Astro.WeakField
 import GTH.Astro.GravitationalWaves
+import GTH.Astro.GravitationalWaveHarmonics
 import GTH.Astro.CosmologicalNucleosynthesis
 import GTH.Astro.NonThermalGamowFusion
 import GTH.Astro.ClusterDynamics
@@ -29,6 +30,6 @@ import GTH.HPC.DistributedLensingDriver
 import GTH.Vulkan.NDKComputeKernel
 
 /-!
-# Geotopological Hydrodynamics (GTH v5.0) — Master 29-Module Formal Verification Suite
-Machine-verified formal specifications across nuclear astrophysics, quantum geometry, and continuum rheology.
+# Geotopological Hydrodynamics (GTH v5.0) — Master 30-Module Formal Verification Suite
+Machine-verified formal specifications across gravitational wave harmonics, non-linear continuum mechanics, and cosmology.
 -/

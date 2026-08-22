@@ -27,9 +27,9 @@ else
     echo -e "${YELLOW}Notice: Install python via 'pkg install -y python'${NC}"
 fi
 
-# 2. Inspect 29 Formal Lean 4 Modules
+# 2. Inspect 30 Formal Lean 4 Modules
 echo -e "
-${YELLOW}[2/5] Inspecting 29 Core Lean 4 Formal Proof Modules...${NC}"
+${YELLOW}[2/5] Inspecting 30 Core Lean 4 Formal Proof Modules...${NC}"
 LEAN_MODULES=(
     "GTH/Core/Parameters.lean"
     "GTH/Core/SaturatedCoreMechanics.lean"
@@ -50,6 +50,7 @@ LEAN_MODULES=(
     "GTH/Quantum/CasimirThreshold.lean"
     "GTH/Astro/WeakField.lean"
     "GTH/Astro/GravitationalWaves.lean"
+    "GTH/Astro/GravitationalWaveHarmonics.lean"
     "GTH/Astro/CosmologicalNucleosynthesis.lean"
     "GTH/Astro/NonThermalGamowFusion.lean"
     "GTH/Astro/ClusterDynamics.lean"
@@ -68,7 +69,7 @@ for mod in "${LEAN_MODULES[@]}"; do
         echo -e "  ${YELLOW}✗ Not found: $mod${NC}"
     fi
 done
-echo -e "${GREEN}✓ All 29 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
+echo -e "${GREEN}✓ All 30 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
 
 # 3. Run Validation Pipelines
 echo -e "
@@ -96,6 +97,7 @@ python3 pipelines/spark_gth_driver.py || python pipelines/spark_gth_driver.py
 python3 pipelines/vulkan_jacobi_convergence_solver.py || python pipelines/vulkan_jacobi_convergence_solver.py
 python3 pipelines/carreau_yasuda_upper_convected_solver.py || python pipelines/carreau_yasuda_upper_convected_solver.py
 python3 pipelines/gamow_non_thermal_fusion_solver.py || python pipelines/gamow_non_thermal_fusion_solver.py
+python3 pipelines/gw_echo_higher_harmonics_solver.py || python pipelines/gw_echo_higher_harmonics_solver.py
 
 # 4. WebGL2 Sandbox
 echo -e "
@@ -120,7 +122,7 @@ fi
 
 git branch -M main
 git add .
-git commit -m "GTH v5.0: Complete 29-module formal verification suite and Non-Thermal Gamow Fusion solver" || true
+git commit -m "GTH v5.0: Complete 30-module formal verification suite and GW Higher Harmonics solver" || true
 
 echo -e "${GREEN}✓ Remote origin set to: $(git remote get-url origin)${NC}"
 echo -e "${GREEN}✓ Branch: $(git branch --show-current)${NC}"
