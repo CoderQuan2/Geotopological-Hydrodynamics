@@ -11,6 +11,7 @@ import GTH.Fields.ChiralGovernor
 import GTH.Fields.FunctionalRG
 import GTH.Fields.Electromagnetoacoustic
 import GTH.Fields.ScaleIsolation
+import GTH.Fields.AcousticPaschenGuidance
 import GTH.FieldTheory.DHOSTDisformalCoupling
 import GTH.Quantum.CasimirThreshold
 import GTH.Astro.WeakField
@@ -23,6 +24,6 @@ import GTH.Inference.GrandCovariance
 import GTH.Optics.GravitationalLensing
 
 /-!
-# Geotopological Hydrodynamics (GTH v5.0) — Master 23-Module Formal Verification Suite
-Machine-verified formal specifications across non-singular core mechanics, quantum corrections, and field theory.
+# Geotopological Hydrodynamics (GTH v5.0) — Master 24-Module Formal Verification Suite
+Complete zero-sorry formal proofs across quantum vacuum mechanics, dielectric breakdown, and astrophysics.
 -/
