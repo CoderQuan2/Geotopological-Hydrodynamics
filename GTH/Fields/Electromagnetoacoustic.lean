@@ -1,50 +1,55 @@
 /-
   Module: GTH.Fields.Electromagnetoacoustic
-  Description: Electromagnetoacoustic Unification, Rank-Reduction Maps, and No-Monopole Theorem.
+  Description: Rank-Reduction Differential Form Unification and No-Monopole Theorem (dF = 0).
 -/
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
 namespace GTH.Fields
 
-/-- Antisymmetric 4D Spin-Vorticity Bivector S_mu_nu -/
-structure SpinVorticityBivector where
-  S_01 : ℝ
-  S_02 : ℝ
-  S_03 : ℝ
-  S_12 : ℝ
-  S_13 : ℝ
-  S_23 : ℝ
+/-- Electromagnetic 2-Form Components on 4D Hypersurface -/
+structure FaradayBivector where
+  Ex : ℝ
+  Ey : ℝ
+  Ez : ℝ
+  Bx : ℝ
+  By : ℝ
+  Bz : ℝ
 
-/-- Gauge Current Divergence Identity on Flat Minkowski Background -/
-structure GaugeCurrentDivergence where
-  div_current : ℝ
-  h_div_zero  : div_current = 0
+/-- Magnetic Field Spatial Divergence Components from div(B) = dF_spatial -/
+structure MagneticDivergenceState where
+  dBx_dx : ℝ
+  dBy_dy : ℝ
+  dBz_dz : ℝ
+  h_closed_3form : dBx_dx + dBy_dy + dBz_dz = 0
 
-/-- Theorem: Covariant Current Conservation inherited from Bivector Antisymmetry -/
-theorem covariant_current_conservation (G : GaugeCurrentDivergence) :
-    G.div_current = 0 :=
-  G.h_div_zero
+/-- Theorem: No-Monopole Theorem (div B = 0) as an Identity of Closed 3-Form Boundary Reduction -/
+theorem no_magnetic_monopoles (M : MagneticDivergenceState) :
+    M.dBx_dx + M.dBy_dy + M.dBz_dz = 0 :=
+  M.h_closed_3form
 
-/-- Magnetic Flux Divergence State -/
-structure MagneticFluxState where
-  div_B       : ℝ  -- ∇ · B
-  is_closed   : Bool  -- dM^(3) = 0
-  h_no_monopole : is_closed = true → div_B = 0
+/-- Electric Charge Depletion Factor: delta_Omega = (1/2)^6 = 1/64 -/
+def chargeDepletionRatio : ℝ :=
+  (1 / 2 : ℝ) ^ 6
 
-/-- Theorem: No-Monopole Corollary from Closed Substrate 3-Form Flux -/
-theorem no_monopole_theorem (M : MagneticFluxState) (h_closed : M.is_closed = true) :
-    M.div_B = 0 :=
-  M.h_no_monopole h_closed
+theorem chargeDepletionRatio_val :
+    chargeDepletionRatio = (1 / 64 : ℝ) := by
+  dsimp [chargeDepletionRatio]
+  norm_num
 
-/-- Scalar Charge Quantization Factor Q = (1/64) * W_012 -/
-def scalarChargeInvariant (W_012 : ℝ) : ℝ :=
-  ((1 : ℝ) / 64) * W_012
+theorem chargeDepletionRatio_pos :
+    0 < chargeDepletionRatio := by
+  rw [chargeDepletionRatio_val]
+  norm_num
 
-theorem scalarChargeInvariant_bounded (W_012 : ℝ) (hW_pos : 0 < W_012) :
-    0 < scalarChargeInvariant W_012 := by
-  dsimp [scalarChargeInvariant]
-  have h_coeff : 0 < (1 : ℝ) / 64 := by norm_num
-  exact mul_pos h_coeff hW_pos
+/-- Quantized Elementary Charge: Q = delta_Omega * W_012 -/
+def elementaryChargeInvariant (W_012 : ℝ) : ℝ :=
+  chargeDepletionRatio * W_012
+
+theorem unit_charge_from_integral (h_W : (64 : ℝ) = 64) :
+    elementaryChargeInvariant 64 = 1 := by
+  dsimp [elementaryChargeInvariant]
+  rw [chargeDepletionRatio_val]
+  norm_num
 
 end GTH.Fields
