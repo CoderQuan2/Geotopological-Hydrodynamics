@@ -16,6 +16,7 @@ import GTH.Fields.Electromagnetoacoustic
 import GTH.Fields.ScaleIsolation
 import GTH.Fields.AcousticPaschenGuidance
 import GTH.FieldTheory.DHOSTDisformalCoupling
+import GTH.FieldTheory.DHOSTActionReduction
 import GTH.Quantum.CasimirThreshold
 import GTH.Quantum.VortexCirculationQuantization
 import GTH.Quantum.NeutrinoOscillationGeometry
@@ -36,6 +37,6 @@ import GTH.HPC.DistributedLensingDriver
 import GTH.Vulkan.NDKComputeKernel
 
 /-!
-# Geotopological Hydrodynamics (GTH v12.0) — Master 36-Module Formal Verification Suite
-Machine-verified formal specifications across 5D Gauss-Codazzi Weyl curvature, tensor calculus, and quantum astrophysics.
+# Geotopological Hydrodynamics (GTH v12.0) — Master 37-Module Formal Verification Suite
+Machine-verified formal specifications across DHOST action reductions, Weyl curvature tensor calculus, and quantum astrophysics.
 -/
