@@ -11,6 +11,7 @@ import GTH.Topology.Knots
 import GTH.Topology.Solitons
 import GTH.Topology.GeoKnotBraiding
 import GTH.Topology.BraidPolynomialMassSpectrum
+import GTH.Topology.SolitonStabilityDerrickEvasion
 import GTH.Fields.ChiralGovernor
 import GTH.Fields.FunctionalRG
 import GTH.Fields.Electromagnetoacoustic
@@ -41,6 +42,6 @@ import GTH.HPC.DistributedLensingDriver
 import GTH.Vulkan.NDKComputeKernel
 
 /-!
-# Geotopological Hydrodynamics (GTH v12.0) — Master 41-Module Formal Verification Suite
-Machine-verified formal specifications across EFT chiral anomaly cancellation, joint Bayesian MCMC, and quantum astrophysics.
+# Geotopological Hydrodynamics (GTH v12.0) — Master 42-Module Formal Verification Suite
+Machine-verified formal specifications across Derrick's evasion soliton stability, chiral anomalies, and quantum astrophysics.
 -/

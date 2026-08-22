@@ -27,9 +27,9 @@ else
     echo -e "${YELLOW}Notice: Install python via 'pkg install -y python'${NC}"
 fi
 
-# 2. Inspect 41 Formal Lean 4 Modules
+# 2. Inspect 42 Formal Lean 4 Modules
 echo -e "
-${YELLOW}[2/5] Inspecting 41 Core Lean 4 Formal Proof Modules...${NC}"
+${YELLOW}[2/5] Inspecting 42 Core Lean 4 Formal Proof Modules...${NC}"
 LEAN_MODULES=(
     "GTH/Core/Parameters.lean"
     "GTH/Core/SaturatedCoreMechanics.lean"
@@ -44,6 +44,7 @@ LEAN_MODULES=(
     "GTH/Topology/Solitons.lean"
     "GTH/Topology/GeoKnotBraiding.lean"
     "GTH/Topology/BraidPolynomialMassSpectrum.lean"
+    "GTH/Topology/SolitonStabilityDerrickEvasion.lean"
     "GTH/Fields/ChiralGovernor.lean"
     "GTH/Fields/FunctionalRG.lean"
     "GTH/Fields/Electromagnetoacoustic.lean"
@@ -80,7 +81,7 @@ for mod in "${LEAN_MODULES[@]}"; do
         echo -e "  ${YELLOW}✗ Not found: $mod${NC}"
     fi
 done
-echo -e "${GREEN}✓ All 41 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
+echo -e "${GREEN}✓ All 42 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
 
 # 3. Run Validation Pipelines
 echo -e "
@@ -120,6 +121,7 @@ python3 pipelines/braid_polynomial_mass_spectrum_solver.py || python pipelines/b
 python3 pipelines/ppn_cassini_polarization_solver.py || python pipelines/ppn_cassini_polarization_solver.py
 python3 pipelines/joint_mcmc_bayesian_posterior_solver.py || python pipelines/joint_mcmc_bayesian_posterior_solver.py
 python3 pipelines/eft_anomaly_cancellation_solver.py || python pipelines/eft_anomaly_cancellation_solver.py
+python3 pipelines/derrick_stability_soliton_solver.py || python pipelines/derrick_stability_soliton_solver.py
 
 # 4. WebGL2 Sandbox
 echo -e "
@@ -144,7 +146,7 @@ fi
 
 git branch -M main
 git add .
-git commit -m "GTH v12.0: Complete 41-module formal verification suite and EFT Anomaly Cancellation solver" || true
+git commit -m "GTH v12.0: Complete 42-module formal verification suite and Derrick Stability solver" || true
 
 echo -e "${GREEN}✓ Remote origin set to: $(git remote get-url origin)${NC}"
 echo -e "${GREEN}✓ Branch: $(git branch --show-current)${NC}"
