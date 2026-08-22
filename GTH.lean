@@ -16,8 +16,9 @@ import GTH.Astro.ClusterDynamics
 import GTH.Astro.BeltramiWakes
 import GTH.Cosmology.HubbleTension
 import GTH.Inference.GrandCovariance
+import GTH.Optics.GravitationalLensing
 
 /-!
-# Geotopological Hydrodynamics (GTH v5.0) — Master 18-Module Formal Verification Suite
-Full mathematical formalization across 5D differential geometry, continuum mechanics, and astrophysics.
+# Geotopological Hydrodynamics (GTH v5.0) — Master 19-Module Verification Suite
+Unified formal verification across differential geometry, optics, continuum mechanics, and astrophysics.
 -/

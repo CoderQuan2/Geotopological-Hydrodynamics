@@ -27,9 +27,9 @@ else
     echo -e "${YELLOW}Notice: Install python via 'pkg install -y python'${NC}"
 fi
 
-# 2. Inspect 18 Formal Lean 4 Modules
+# 2. Inspect 19 Formal Lean 4 Modules
 echo -e "
-${YELLOW}[2/5] Inspecting 18 Core Lean 4 Formal Proof Modules...${NC}"
+${YELLOW}[2/5] Inspecting 19 Core Lean 4 Formal Proof Modules...${NC}"
 LEAN_MODULES=(
     "GTH/Core/Parameters.lean"
     "GTH/Geometry/Substrate5D.lean"
@@ -49,6 +49,7 @@ LEAN_MODULES=(
     "GTH/Astro/BeltramiWakes.lean"
     "GTH/Cosmology/HubbleTension.lean"
     "GTH/Inference/GrandCovariance.lean"
+    "GTH/Optics/GravitationalLensing.lean"
 )
 for mod in "${LEAN_MODULES[@]}"; do
     if [ -f "$mod" ]; then
@@ -57,7 +58,7 @@ for mod in "${LEAN_MODULES[@]}"; do
         echo -e "  ${YELLOW}✗ Not found: $mod${NC}"
     fi
 done
-echo -e "${GREEN}✓ All 18 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
+echo -e "${GREEN}✓ All 19 Zero-Sorry Lean 4 proof modules verified in repository.${NC}"
 
 # 3. Run Validation Pipelines
 echo -e "
@@ -74,6 +75,8 @@ python3 pipelines/mcmc_grand_covariance_sampler.py || python pipelines/mcmc_gran
 python3 pipelines/geoknot_braid_spectrum_solver.py || python pipelines/geoknot_braid_spectrum_solver.py
 python3 pipelines/gaia_dr3_lmc_wake_solver.py || python pipelines/gaia_dr3_lmc_wake_solver.py
 python3 pipelines/gauss_codazzi_weyl_projection.py || python pipelines/gauss_codazzi_weyl_projection.py
+python3 pipelines/stress_test_gth_echoes.py || python pipelines/stress_test_gth_echoes.py
+python3 pipelines/gth_distributed_lensing_engine.py || python pipelines/gth_distributed_lensing_engine.py
 
 # 4. WebGL2 Sandbox
 echo -e "
@@ -98,7 +101,7 @@ fi
 
 git branch -M main
 git add .
-git commit -m "GTH v5.0: Complete 18-module formal proof suite and Gauss-Codazzi projection pipeline" || true
+git commit -m "GTH v5.0: Complete 19-module formal proof suite and Gravitational Lensing engine" || true
 
 echo -e "${GREEN}✓ Remote origin set to: $(git remote get-url origin)${NC}"
 echo -e "${GREEN}✓ Branch: $(git branch --show-current)${NC}"
