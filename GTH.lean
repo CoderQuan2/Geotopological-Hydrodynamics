@@ -16,6 +16,7 @@ import GTH.Fields.AcousticPaschenGuidance
 import GTH.FieldTheory.DHOSTDisformalCoupling
 import GTH.Quantum.CasimirThreshold
 import GTH.Quantum.VortexCirculationQuantization
+import GTH.Quantum.NeutrinoOscillationGeometry
 import GTH.Astro.WeakField
 import GTH.Astro.GravitationalWaves
 import GTH.Astro.GravitationalWaveHarmonics
@@ -32,6 +33,6 @@ import GTH.HPC.DistributedLensingDriver
 import GTH.Vulkan.NDKComputeKernel
 
 /-!
-# Geotopological Hydrodynamics (GTH v5.0) — Master 32-Module Formal Verification Suite
-Machine-verified formal specifications across quantum vortex circulation, topological solitons, and relativistic astrophysics.
+# Geotopological Hydrodynamics (GTH v5.0) — Master 33-Module Formal Verification Suite
+Machine-verified formal specifications across neutrino oscillation geometry, quantum circulation, and relativistic astrophysics.
 -/
