@@ -11,11 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Elan (Lean 4 Version Manager)
+
+      - name: Install Elan
         run: |
           curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> $GITHUB_PATH
-      - name: Verify Proofs
+
+      - name: Lake Update & Cache Retrieval
         run: |
           lake update
+          lake exe cache get || true
+
+      - name: Build GTH Proofs
+        run: |
           lake build
