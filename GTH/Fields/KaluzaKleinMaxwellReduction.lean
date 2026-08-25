@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Fields
 
 /-- Electromagnetic Field Strength Tensor Components F_mu_nu -/
@@ -24,11 +26,11 @@ theorem field_strength_antisymmetry (F : FieldStrengthTensor4D) :
   · rfl
 
 /-- First Lorentz Invariant: I_1 = F_mu_nu F^mu_nu = 2 * (B^2 - E^2 / c^2) -/
-def lorentzInvariant_I1 (Ex Ey Ez Bx By Bz c_SI : ℝ) : ℝ :=
+noncomputable def lorentzInvariant_I1 (Ex Ey Ez Bx By Bz c_SI : ℝ) : ℝ :=
   2 * ((Bx ^ 2 + By ^ 2 + Bz ^ 2) - (Ex ^ 2 + Ey ^ 2 + Ez ^ 2) / (c_SI ^ 2))
 
 /-- Second Lorentz Invariant: I_2 = F_mu_nu * F_dual^mu_nu = -4 * (E . B) / c -/
-def lorentzInvariant_I2 (Ex Ey Ez Bx By Bz c_SI : ℝ) : ℝ :=
+noncomputable def lorentzInvariant_I2 (Ex Ey Ez Bx By Bz c_SI : ℝ) : ℝ :=
   - 4 * (Ex * Bx + Ey * By + Ez * Bz) / c_SI
 
 /-- Inhomogeneous Maxwell Euler-Lagrange Current State: div(F) = J -/
@@ -55,7 +57,7 @@ theorem maxwell_euler_lagrange_reduction (M : MaxwellSourceState) :
   ⟨M.h_eq_0, M.h_eq_1, M.h_eq_2, M.h_eq_3⟩
 
 /-- 4D Electromagnetic Energy-Momentum Tensor Trace: T^mu_mu = 0 in 4D -/
-def emStressTensorTrace (I1 : ℝ) : ℝ :=
+noncomputable def emStressTensorTrace (I1 : ℝ) : ℝ :=
   (1 / 4 : ℝ) * (4 * I1) - I1
 
 theorem em_stress_tensor_traceless (I1 : ℝ) :

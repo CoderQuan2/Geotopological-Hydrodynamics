@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Geometry
 
 /-- 5D Bulk Curvature Contraction State with Extrinsic Curvature K_mu_nu -/

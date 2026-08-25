@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Astro
 
 /-- Thermonuclear Reactant State with Nuclear Charges Z1, Z2 and Reduced Mass mu -/

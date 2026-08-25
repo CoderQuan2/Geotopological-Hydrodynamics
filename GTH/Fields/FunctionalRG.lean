@@ -1,6 +1,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Fields
 
 structure FRGFlowState where
@@ -41,8 +43,12 @@ theorem dVtop_drho_pos (B : BarrierDerivativeState) : 0 < dVtop_drho B := by
   have h_denom : 0 < 1 - 2 * B.F.alpha_c * B.F.kappa_SI * B.F.rho_density := by
     have h_ceil := B.h_sub_ceil
     dsimp [rhoMax] at h_ceil
-    have h_prod_pos : 0 < 2 * B.F.alpha_c * B.F.kappa_SI := mul_pos (mul_pos (by norm_num) B.F.h_alpha) B.F.h_kappa
-    have h_ineq := (lt_div_iff₀ h_prod_pos).mp h_ceil
+    have h_prod_pos : 0 < 2 * B.F.alpha_c * B.F.kappa_SI :=
+      mul_pos (mul_pos (by norm_num) B.F.h_alpha) B.F.h_kappa
+    have h_mul : B.F.rho_density * (2 * B.F.alpha_c * B.F.kappa_SI) < 1 := by
+      have h_div : B.F.rho_density < 1 / (2 * B.F.alpha_c * B.F.kappa_SI) := h_ceil
+      have := (lt_div_iff h_prod_pos).mp h_div
+      exact this
     linarith
   exact div_pos h_num h_denom
 

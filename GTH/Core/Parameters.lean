@@ -1,6 +1,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Core
 
 structure StateVector where
@@ -19,11 +21,13 @@ structure StateVector where
   h_tau   : 0 < tau_0
   h_eta   : 0 < eta_n
 
+namespace StateVector
+
 variable (S : StateVector)
 
 noncomputable def soundSpeed : ℝ := Real.sqrt (S.K_bulk / S.rho_0)
 noncomputable def shearWaveSpeed : ℝ := Real.sqrt (S.G_shear / S.rho_0)
-def maxwellRelaxationTime : ℝ := S.eta_n / S.G_shear
+noncomputable def maxwellRelaxationTime : ℝ := S.eta_n / S.G_shear
 noncomputable def lambdaGTH : ℝ := Real.sqrt (S.M_UV * S.m_IR)
 
 theorem soundSpeed_pos : 0 < S.soundSpeed := by
@@ -44,5 +48,18 @@ theorem lambdaGTH_pos : 0 < S.lambdaGTH := by
   dsimp [lambdaGTH]
   apply Real.sqrt_pos.mpr
   exact mul_pos S.h_M_UV S.h_m_IR
+
+end StateVector
+
+-- Expose top-level aliases for backwards compatibility
+noncomputable def soundSpeed (S : StateVector) : ℝ := S.soundSpeed
+noncomputable def shearWaveSpeed (S : StateVector) : ℝ := S.shearWaveSpeed
+noncomputable def maxwellRelaxationTime (S : StateVector) : ℝ := S.maxwellRelaxationTime
+noncomputable def lambdaGTH (S : StateVector) : ℝ := S.lambdaGTH
+
+theorem soundSpeed_pos (S : StateVector) : 0 < soundSpeed S := S.soundSpeed_pos
+theorem shearWaveSpeed_pos (S : StateVector) : 0 < shearWaveSpeed S := S.shearWaveSpeed_pos
+theorem maxwellRelaxationTime_pos (S : StateVector) : 0 < maxwellRelaxationTime S := S.maxwellRelaxationTime_pos
+theorem lambdaGTH_pos (S : StateVector) : 0 < lambdaGTH S := S.lambdaGTH_pos
 
 end GTH.Core

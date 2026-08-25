@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Inference
 
 /-- Grand Cross-Channel Covariance Matrix Positive-Definiteness State -/

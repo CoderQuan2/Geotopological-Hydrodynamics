@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Core
 
 /-- Compact Core Mass State with Non-Singular Density Ceiling rho_max -/

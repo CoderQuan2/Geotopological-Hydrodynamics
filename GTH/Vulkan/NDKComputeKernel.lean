@@ -21,7 +21,7 @@ structure DiscreteGridState where
 /-- Discrete Jacobi Iteration Spectral Radius Parameter rho in (0, 1) -/
 structure JacobiContractionState where
   G            : DiscreteGridState
-  spectral_rho : ℝ  -- Spectral radius rho in (0, 1)
+  spectral_rho : ℝ  -- e.g. cos(pi / N) in (0, 1)
   h_rho_pos    : 0 < spectral_rho
   h_rho_lt_one : spectral_rho < 1
 

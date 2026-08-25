@@ -1,5 +1,6 @@
 import Mathlib.Data.Real.Basic
-import Mathlib.Data.Complex.Basic
+
+noncomputable section
 
 namespace GTH.Continuum
 
@@ -9,7 +10,7 @@ structure ElasticModuli where
   h_K     : 0 < K_bulk
   h_G     : 0 < G_shear
 
-def poissonRatio (M : ElasticModuli) : ℝ :=
+noncomputable def poissonRatio (M : ElasticModuli) : ℝ :=
   (3 * M.K_bulk - 2 * M.G_shear) / (2 * (3 * M.K_bulk + M.G_shear))
 
 theorem incompressibility_limit (M : ElasticModuli) (h_incomp : M.G_shear = 0) :

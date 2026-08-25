@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Astro
 
 /-- Compact Remnant Spin State with Angular Momentum J and Gravitational Mass M -/

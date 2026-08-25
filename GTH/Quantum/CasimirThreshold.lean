@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Quantum
 
 /-- Kaluza-Klein Casimir Threshold State on S¹_tau of length L_tau -/
@@ -30,7 +32,7 @@ theorem deltaLoopCorrection_pos (K : KKCasimirState) :
   exact div_pos h_num h_denom
 
 /-- Bare Geometric Model Coupling G_model = G5 / L_tau -/
-def G_model_tree (K : KKCasimirState) : ℝ :=
+noncomputable def G_model_tree (K : KKCasimirState) : ℝ :=
   K.G5 / K.L_tau
 
 /-- Physical Renormalized 4D Newton Constant: G_eff = G_model * (1 + delta_loop) -/

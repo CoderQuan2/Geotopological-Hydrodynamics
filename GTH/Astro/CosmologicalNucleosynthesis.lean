@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Astro
 
 /-- Substrate Shear Viscosity Parameters during Big Bang Nucleosynthesis (T ~ 0.1 MeV) -/

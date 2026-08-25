@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Fields
 
 /-- Electromagnetic 2-Form Components on 4D Hypersurface -/
@@ -29,7 +31,7 @@ theorem no_magnetic_monopoles (M : MagneticDivergenceState) :
   M.h_closed_3form
 
 /-- Electric Charge Depletion Factor: delta_Omega = (1/2)^6 = 1/64 -/
-def chargeDepletionRatio : ℝ :=
+noncomputable def chargeDepletionRatio : ℝ :=
   (1 / 2 : ℝ) ^ 6
 
 theorem chargeDepletionRatio_val :
@@ -43,10 +45,10 @@ theorem chargeDepletionRatio_pos :
   norm_num
 
 /-- Quantized Elementary Charge: Q = delta_Omega * W_012 -/
-def elementaryChargeInvariant (W_012 : ℝ) : ℝ :=
+noncomputable def elementaryChargeInvariant (W_012 : ℝ) : ℝ :=
   chargeDepletionRatio * W_012
 
-theorem unit_charge_from_integral (h_W : (64 : ℝ) = 64) :
+theorem unit_charge_from_integral :
     elementaryChargeInvariant 64 = 1 := by
   dsimp [elementaryChargeInvariant]
   rw [chargeDepletionRatio_val]

@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.FieldTheory
 
 /-- DHOST Class Ia Metric State with Kinetic Term X = -(1/2) (grad phi)^2 -/

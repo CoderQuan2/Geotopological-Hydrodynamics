@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Quantum
 
 /-- Fundamental Quantum Circulation State with UV Mass Scale M_UV -/

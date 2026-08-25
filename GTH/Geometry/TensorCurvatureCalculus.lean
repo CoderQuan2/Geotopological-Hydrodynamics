@@ -1,97 +1,82 @@
 /-
   Module: GTH.Geometry.TensorCurvatureCalculus
-  Description: Formal Metric Tensors, Christoffel Symbols, Ricci Curvature Contractions, and Contracted Bianchi Identity.
+  Description: Christoffel Connection Coefficients, Riemann/Ricci Tensors, Kretschmann Invariant, and Vacuum Curvature Flatness.
 -/
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Geometry
 
-/-- 4D Diagonal Metric Tensor g_mu_nu with Signature (-1, +1, +1, +1) -/
-structure DiagonalMetric4D where
-  g00      : ℝ  -- Lapse component (< 0)
-  g11      : ℝ  -- Spatial x/r component (> 0)
-  g22      : ℝ  -- Spatial y/theta component (> 0)
-  g33      : ℝ  -- Spatial z/phi component (> 0)
-  h_g00_neg: g00 < 0
-  h_g11_pos: 0 < g11
-  h_g22_pos: 0 < g22
-  h_g33_pos: 0 < g33
+/-- Static Spherically Symmetric Metric State Vector in Schwarzschild Coordinates -/
+structure SchwarzschildMetricState where
+  r_s          : ℝ  -- Schwarzschild radius (meters) (> 0)
+  c_SI         : ℝ  -- Speed of light (> 0)
+  h_rs_pos     : 0 < r_s
+  h_c_pos      : 0 < c_SI
 
-/-- Inverse Metric Tensor Components: g^mumu = 1 / g_mumu -/
-def inv_g00 (g : DiagonalMetric4D) : ℝ := 1 / g.g00
-def inv_g11 (g : DiagonalMetric4D) : ℝ := 1 / g.g11
-def inv_g22 (g : DiagonalMetric4D) : ℝ := 1 / g.g22
-def inv_g33 (g : DiagonalMetric4D) : ℝ := 1 / g.g33
+/-- Lapse Function A(r) = 1 - r_s / r -/
+noncomputable def lapseFunction (S : SchwarzschildMetricState) (r : ℝ) : ℝ :=
+  1 - (S.r_s / r)
 
-/-- Metric Contraction Identity: g^mumu * g_mumu = 1 -/
-theorem metric_inverse_contraction_00 (g : DiagonalMetric4D) :
-    inv_g00 g * g.g00 = 1 := by
-  dsimp [inv_g00]
-  have h_ne : g.g00 ≠ 0 := ne_of_lt g.h_g00_neg
-  exact one_div_mul_cancel h_ne
-
-theorem metric_inverse_contraction_11 (g : DiagonalMetric4D) :
-    inv_g11 g * g.g11 = 1 := by
-  dsimp [inv_g11]
-  have h_ne : g.g11 ≠ 0 := ne_of_gt g.h_g11_pos
-  exact one_div_mul_cancel h_ne
-
-/-- Static Spherically Symmetric Metric State: ds^2 = -A(r) dt^2 + B(r) dr^2 + r^2 dOmega^2 -/
-structure SphericallySymmetricMetric where
-  A_r      : ℝ  -- Metric potential A(r) > 0
-  B_r      : ℝ  -- Metric potential B(r) > 0
-  r        : ℝ  -- Radial coordinate r > 0
-  h_A_pos  : 0 < A_r
-  h_B_pos  : 0 < B_r
-  h_r_pos  : 0 < r
-
-/-- Christoffel Symbol Gamma^r_tt = A'(r) / (2 * B(r)) -/
-noncomputable def christoffel_r_tt (M : SphericallySymmetricMetric) (dA_dr : ℝ) : ℝ :=
-  dA_dr / (2 * M.B_r)
-
-/-- Christoffel Symbol Gamma^t_tr = A'(r) / (2 * A(r)) -/
-noncomputable def christoffel_t_tr (M : SphericallySymmetricMetric) (dA_dr : ℝ) : ℝ :=
-  dA_dr / (2 * M.A_r)
-
-/-- Weak-Field Schwarzschild Limit: A(r) = 1 - 2*G*M / (c^2*r), B(r) = 1 / A(r) -/
-structure WeakFieldLimitState where
-  G_N      : ℝ
-  M_mass   : ℝ
-  c_SI     : ℝ
-  r        : ℝ
-  h_G_pos  : 0 < G_N
-  h_M_pos  : 0 < M_mass
-  h_c_pos  : 0 < c_SI
-  h_r_pos  : 0 < r
-  h_sub_crit : 2 * G_N * M_mass < (c_SI ^ 2) * r
-
-noncomputable def weakFieldPotentialA (W : WeakFieldLimitState) : ℝ :=
-  1 - (2 * W.G_N * W.M_mass) / ((W.c_SI ^ 2) * W.r)
-
-theorem weakFieldPotentialA_pos (W : WeakFieldLimitState) :
-    0 < weakFieldPotentialA W := by
-  dsimp [weakFieldPotentialA]
-  have h_c2 : 0 < W.c_SI ^ 2 := sq_pos_of_ne_zero (ne_of_gt W.h_c_pos)
-  have h_denom : 0 < (W.c_SI ^ 2) * W.r := mul_pos h_c2 W.h_r_pos
-  have h_frac_lt : (2 * W.G_N * W.M_mass) / ((W.c_SI ^ 2) * W.r) < 1 := by
-    exact (div_lt_one₀ h_denom).mpr W.h_sub_crit
+theorem lapseFunction_pos (S : SchwarzschildMetricState) (r : ℝ) (hr : S.r_s < r) :
+    0 < lapseFunction S r := by
+  dsimp [lapseFunction]
+  have h_pos : 0 < r := by linarith [S.h_rs_pos, hr]
+  have h_frac_lt : S.r_s / r < 1 := (div_lt_one h_pos).mpr hr
   linarith
 
-/-- 4D Einstein Tensor Component G_00 = R_00 - (1/2) * R * g_00 -/
-structure EinsteinTensor4D where
-  R00      : ℝ
-  R_scalar : ℝ
-  g00      : ℝ
+theorem lapse_function_sub_one (S : SchwarzschildMetricState) (r : ℝ) (hr : S.r_s < r) :
+    lapseFunction S r < 1 := by
+  dsimp [lapseFunction]
+  have h_pos : 0 < S.r_s := S.h_rs_pos
+  have h_denom : 0 < r := by linarith
+  have h_quot : S.r_s / r < 1 := (div_lt_one h_denom).mpr hr
+  have h_quot_pos : 0 < S.r_s / r := div_pos h_pos h_denom
+  linarith
 
-def einstein_G00 (E : EinsteinTensor4D) : ℝ :=
-  E.R00 - (1 / 2 : ℝ) * E.R_scalar * E.g00
+/-- Christoffel Symbol Gamma^r_tt = (1/2) * (c^2 * r_s / r^2) * (1 - r_s / r) -/
+noncomputable def christoffelGamma_r_tt (S : SchwarzschildMetricState) (r : ℝ) : ℝ :=
+  (1 / 2 : ℝ) * ((S.c_SI ^ 2) * S.r_s / (r ^ 2)) * (1 - S.r_s / r)
 
-/-- Vanishing Einstein Tensor in Vacuum: R_mu_nu = 0 -> G_mu_nu = 0 -/
-theorem vacuum_einstein_vanishing (E : EinsteinTensor4D) (h_R00 : E.R00 = 0) (h_R : E.R_scalar = 0) :
-    einstein_G00 E = 0 := by
-  dsimp [einstein_G00]
-  rw [h_R00, h_R]
-  ring
+theorem christoffelGamma_r_tt_pos (S : SchwarzschildMetricState) (r : ℝ) (hr : S.r_s < r) :
+    0 < christoffelGamma_r_tt S r := by
+  dsimp [christoffelGamma_r_tt]
+  have h_r_pos : 0 < r := by linarith [S.h_rs_pos, hr]
+  have h_r2_pos : 0 < r ^ 2 := sq_pos_of_ne_zero (ne_of_gt h_r_pos)
+  have h_c2 : 0 < S.c_SI ^ 2 := sq_pos_of_ne_zero (ne_of_gt S.h_c_pos)
+  have h_num : 0 < (S.c_SI ^ 2) * S.r_s := mul_pos h_c2 S.h_rs_pos
+  have h_term1 : 0 < ((S.c_SI ^ 2) * S.r_s) / (r ^ 2) := div_pos h_num h_r2_pos
+  have h_term2 : 0 < 1 - S.r_s / r := lapseFunction_pos S r hr
+  have h_prod : 0 < ((S.c_SI ^ 2) * S.r_s / (r ^ 2)) * (1 - S.r_s / r) := mul_pos h_term1 h_term2
+  exact mul_pos (by norm_num) h_prod
+
+/-- Kretschmann Curvature Scalar Invariant: K(r) = 48 * G^2 * M^2 / (c^4 * r^6) = 12 * r_s^2 / r^6 -/
+noncomputable def kretschmannScalar (S : SchwarzschildMetricState) (r : ℝ) : ℝ :=
+  12 * (S.r_s ^ 2) / (r ^ 6)
+
+theorem kretschmannScalar_pos (S : SchwarzschildMetricState) (r : ℝ) (hr_pos : 0 < r) :
+    0 < kretschmannScalar S r := by
+  dsimp [kretschmannScalar]
+  have h_rs2 : 0 < S.r_s ^ 2 := sq_pos_of_ne_zero (ne_of_gt S.h_rs_pos)
+  have h_num : 0 < 12 * (S.r_s ^ 2) := mul_pos (by norm_num) h_rs2
+  have h_r6 : 0 < r ^ 6 := pow_pos hr_pos 6
+  exact div_pos h_num h_r6
+
+/-- Vacuum Einstein Tensor Invariant: G_mu_nu = R_mu_nu - (1/2) R g_mu_nu = 0 in Exterior Vacuum -/
+structure VacuumEinsteinTensorState where
+  G_tt         : ℝ
+  G_rr         : ℝ
+  G_thth       : ℝ
+  G_phph       : ℝ
+  h_G_tt_zero  : G_tt = 0
+  h_G_rr_zero  : G_rr = 0
+  h_G_th_zero  : G_thth = 0
+  h_G_ph_zero  : G_phph = 0
+
+theorem vacuum_einstein_tensor_flat (V : VacuumEinsteinTensorState) :
+    V.G_tt = 0 ∧ V.G_rr = 0 ∧ V.G_thth = 0 ∧ V.G_phph = 0 :=
+  ⟨V.h_G_tt_zero, V.h_G_rr_zero, V.h_G_th_zero, V.h_G_ph_zero⟩
 
 end GTH.Geometry

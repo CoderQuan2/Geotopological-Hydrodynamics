@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Continuum
 
 /-- Second Strain-Rate Invariant State I_2(D) = 2 * Tr(D^2) >= 0 -/
@@ -42,7 +44,7 @@ theorem scalarStrainRate_nonneg (S : StrainRateInvariantState) :
   Real.sqrt_nonneg (secondStrainInvariant S)
 
 /-- Asymptotic Saturation Stress: sigma_sat = eta_0 / tau_0 -/
-def asymptoticSaturationStress (S : StrainRateInvariantState) : ℝ :=
+noncomputable def asymptoticSaturationStress (S : StrainRateInvariantState) : ℝ :=
   S.eta_0 / S.tau_0
 
 theorem asymptoticSaturationStress_pos (S : StrainRateInvariantState) :

@@ -1,5 +1,6 @@
 import Mathlib.Data.Real.Basic
-import Mathlib.Data.Int.Basic
+
+noncomputable section
 
 namespace GTH.Topology
 

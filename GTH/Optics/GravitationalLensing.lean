@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Optics
 
 /-- Gravitational Lensing Geometry State with Angular Diameter Distances -/

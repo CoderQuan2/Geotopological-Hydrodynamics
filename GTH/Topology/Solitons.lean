@@ -1,6 +1,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Topology
 
 structure GeoKnotState where
@@ -21,14 +23,14 @@ noncomputable def solitonMassEstimate (K : GeoKnotState) (N_top : ℤ) (hN : N_t
 theorem solitonMass_pos (K : GeoKnotState) (N_top : ℤ) (hN : N_top ≠ 0) :
     0 < solitonMassEstimate K N_top hN := by
   dsimp [solitonMassEstimate]
-  have h_num : 0 < K.rho_knot * (K.hbar_val ^ 3) := mul_pos K.h_rho (pow_pos K.h_hbar_val 3)
+  have h_num : 0 < K.rho_knot * (K.hbar_val ^ 3) := mul_pos K.h_rho (pow_pos K.h_hbar 3)
   have h_denom : 0 < K.c_sub ^ 3 * (K.M_UV ^ 2) := mul_pos (pow_pos K.h_c 3) (pow_pos K.h_M_UV 2)
   have h_frac_pos : 0 < (K.rho_knot * (K.hbar_val ^ 3)) / (K.c_sub ^ 3 * (K.M_UV ^ 2)) := div_pos h_num h_denom
   have h_sqrt_pos : 0 < Real.sqrt ((K.rho_knot * (K.hbar_val ^ 3)) / (K.c_sub ^ 3 * (K.M_UV ^ 2))) := Real.sqrt_pos.mpr h_frac_pos
   have h_N_pos : 0 < abs (N_top : ℝ) := abs_pos.mpr (by exact_mod_cast hN)
   exact mul_pos h_sqrt_pos h_N_pos
 
-def chargeDepletionFactor : ℝ := (1 : ℝ) / 64
+noncomputable def chargeDepletionFactor : ℝ := (1 : ℝ) / 64
 
 theorem chargeDepletion_pos : 0 < chargeDepletionFactor := by
   dsimp [chargeDepletionFactor]

@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Astro
 
 /-- Gravitational Wave Harmonic State with Fundamental Frequency f_res -/

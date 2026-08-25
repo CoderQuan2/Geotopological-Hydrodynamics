@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Geometry
 
 /-- 5D Hypersurface Slicing State with Unit Normal n_M -/

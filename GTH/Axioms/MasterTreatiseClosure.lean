@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Axioms
 
 /-- Irreducible 7-Parameter Constitutive State Vector Theta -/
@@ -49,7 +51,6 @@ theorem mis_causal_speed_identity (S : StateVector) (h_maxwell : isMaxwellConsis
     S.eta_n / (S.rho_0 * S.tau_0) = S.G_shear / S.rho_0 := by
   dsimp [isMaxwellConsistent] at h_maxwell
   have h_tau_ne : S.tau_0 ≠ 0 := ne_of_gt S.h_tau_pos
-  have h_rho_ne : S.rho_0 ≠ 0 := ne_of_gt S.h_rho_pos
   rw [h_maxwell]
   calc
     (S.G_shear * S.tau_0) / (S.rho_0 * S.tau_0)
@@ -58,11 +59,11 @@ theorem mis_causal_speed_identity (S : StateVector) (h_maxwell : isMaxwellConsis
     _ = S.G_shear / S.rho_0 := mul_one _
 
 /-- 4. Tree-Level Gravitational Coupling: G_model = (3*pi*hbar*c_s) / (4*M_UV^2) -/
-noncomputable def treeGravitationalCoupling (S : StateVector) (hbar : ℝ) (h_hbar : 0 < hbar) : ℝ :=
+noncomputable def treeGravitationalCoupling (S : StateVector) (hbar : ℝ) : ℝ :=
   (3 * Real.pi * hbar * soundSpeed S) / (4 * (S.M_UV ^ 2))
 
 theorem treeGravitationalCoupling_pos (S : StateVector) (hbar : ℝ) (h_hbar : 0 < hbar) :
-    0 < treeGravitationalCoupling S hbar h_hbar := by
+    0 < treeGravitationalCoupling S hbar := by
   dsimp [treeGravitationalCoupling]
   have h_pi : 0 < Real.pi := Real.pi_pos
   have h_num1 : 0 < 3 * Real.pi * hbar := by
@@ -74,11 +75,11 @@ theorem treeGravitationalCoupling_pos (S : StateVector) (hbar : ℝ) (h_hbar : 0
   exact div_pos h_num h_denom
 
 /-- 5. Quantum Superfluid Circulation Quantum: kappa_0 = 2*pi*hbar / M_UV -/
-noncomputable def quantumCirculation (S : StateVector) (hbar : ℝ) (h_hbar : 0 < hbar) : ℝ :=
+noncomputable def quantumCirculation (S : StateVector) (hbar : ℝ) : ℝ :=
   (2 * Real.pi * hbar) / S.M_UV
 
 theorem quantumCirculation_pos (S : StateVector) (hbar : ℝ) (h_hbar : 0 < hbar) :
-    0 < quantumCirculation S hbar h_hbar := by
+    0 < quantumCirculation S hbar := by
   dsimp [quantumCirculation]
   have h_pi : 0 < Real.pi := Real.pi_pos
   have h_num : 0 < 2 * Real.pi * hbar := by
@@ -87,11 +88,11 @@ theorem quantumCirculation_pos (S : StateVector) (hbar : ℝ) (h_hbar : 0 < hbar
   exact div_pos h_num S.h_M_pos
 
 /-- 6. MOND Horizon Surface Acceleration Scale: a_0 = (c_s * H_0) / (2*pi) -/
-noncomputable def mondAcceleration (S : StateVector) (H_0 : ℝ) (h_H0 : 0 < H_0) : ℝ :=
+noncomputable def mondAcceleration (S : StateVector) (H_0 : ℝ) : ℝ :=
   (soundSpeed S * H_0) / (2 * Real.pi)
 
 theorem mondAcceleration_pos (S : StateVector) (H_0 : ℝ) (h_H0 : 0 < H_0) :
-    0 < mondAcceleration S H_0 h_H0 := by
+    0 < mondAcceleration S H_0 := by
   dsimp [mondAcceleration]
   have h_pi : 0 < Real.pi := Real.pi_pos
   have h_num : 0 < soundSpeed S * H_0 := mul_pos (soundSpeed_pos S) h_H0

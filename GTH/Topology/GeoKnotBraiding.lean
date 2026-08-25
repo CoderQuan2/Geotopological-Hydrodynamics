@@ -3,7 +3,8 @@
   Description: 3-Strand Braid Group B_3 Formalization, Trefoil Knot Closure, and Baryon Number Quantization.
 -/
 import Mathlib.Data.Real.Basic
-import Mathlib.Data.Int.Basic
+
+noncomputable section
 
 namespace GTH.Topology
 

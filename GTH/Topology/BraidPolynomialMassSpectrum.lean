@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Topology
 
 /-- Artin Braid Group B3 Generator Representations -/
@@ -44,13 +46,9 @@ theorem massRatioProtonElectron_gt_one (S : SolitonMassState) :
 def baryonNumber (W : ℕ) : ℕ :=
   W / 6
 
-theorem proton_baryon_number_unit : baryonNumber 6 = 1 := by
-  dsimp [baryonNumber]
-  norm_num
+theorem proton_baryon_number_unit : baryonNumber 6 = 1 := rfl
 
-theorem electron_baryon_number_zero : baryonNumber 0 = 0 := by
-  dsimp [baryonNumber]
-  norm_num
+theorem electron_baryon_number_zero : baryonNumber 0 = 0 := rfl
 
 /-- Călugăreanu-White-Fuller Invariant Integral: Lk = Tw + Wr -/
 structure RibbonInvariantState where

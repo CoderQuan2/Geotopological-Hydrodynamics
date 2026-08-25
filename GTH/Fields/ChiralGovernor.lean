@@ -1,5 +1,7 @@
 import Mathlib.Data.Real.Basic
 
+noncomputable section
+
 namespace GTH.Fields
 
 structure ChiralFieldAtPoint where
@@ -11,7 +13,7 @@ structure BareMass where
   M_G   : ℝ
   h_pos : 0 < M_G
 
-def effectiveMassSq (B : BareMass) (C : ChiralFieldAtPoint) : ℝ :=
+noncomputable def effectiveMassSq (B : BareMass) (C : ChiralFieldAtPoint) : ℝ :=
   (B.M_G ^ 2) * (1 - C.chi_val)
 
 theorem effectiveMassSq_pos (B : BareMass) (C : ChiralFieldAtPoint) :
@@ -24,8 +26,11 @@ theorem effectiveMassSq_pos (B : BareMass) (C : ChiralFieldAtPoint) :
 theorem effectiveMassSq_le_bare (B : BareMass) (C : ChiralFieldAtPoint) :
     effectiveMassSq B C ≤ B.M_G ^ 2 := by
   dsimp [effectiveMassSq]
+  have h_MG2_nonneg : 0 ≤ B.M_G ^ 2 := sq_nonneg B.M_G
   have h_factor_le_one : 1 - C.chi_val ≤ 1 := by linarith [C.h_chi_nonneg]
-  nlinarith
+  calc
+    B.M_G ^ 2 * (1 - C.chi_val) ≤ B.M_G ^ 2 * 1 := mul_le_mul_of_nonneg_left h_factor_le_one h_MG2_nonneg
+    _ = B.M_G ^ 2 := mul_one (B.M_G ^ 2)
 
 theorem chiral_orthogonality_governor_bounds (B : BareMass) (C : ChiralFieldAtPoint) :
     0 < effectiveMassSq B C ∧ effectiveMassSq B C ≤ B.M_G ^ 2 := by

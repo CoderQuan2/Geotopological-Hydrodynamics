@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Topology
 
 /-- Soliton Energy Component Integrals I_2 (gradient), I_0 (potential), I_4 (quartic strain) -/

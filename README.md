@@ -90,7 +90,7 @@ ight) + rac{2 r_s}{c_{s,	ext{shear}}}, \quad f_{	ext{res}} = rac{1}{\Delta t_{
 ## 📁 Repository Structure
 
 ```
-geotopological-hydrodynamics/
+gitlean22/
 ├── .github/workflows/
 │   ├── lean_ci.yml                     # Automated Lean 4 formal proof checking
 │   └── vulkan_ci.yml                   # C++20 Vulkan build validation

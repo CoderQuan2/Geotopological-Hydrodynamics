@@ -5,6 +5,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace GTH.Quantum
 
 /-- Neutrino Mass Hierarchy State with Mass Eigenvalues m1, m2, m3 in eV -/
